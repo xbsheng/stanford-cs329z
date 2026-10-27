@@ -7,7 +7,7 @@ const katexPlugin = (markdownItKatex as unknown as { default?: unknown }).defaul
 
 const siteUrl = process.env.DOCS_URL || 'https://xbsheng.github.io/stanford-cs329z/'
 const base = process.env.DOCS_BASE || '/stanford-cs329z/'
-const siteTitle = 'Stanford CS329Z'
+const siteTitle = 'CS329Z · AI Agent 工程'
 const siteDescription = '斯坦福 CS329Z Engineering AI Agents（2026 秋）中文讲义与速读卡'
 const canonicalBase = siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`
 
