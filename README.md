@@ -4,8 +4,6 @@
 
 在线阅读：<https://xbsheng.github.io/stanford-cs329z/>
 
-基于 VitePress 构建，参照 [xbsheng/cmu-agents](https://github.com/xbsheng/cmu-agents) 的组织方式：每讲一份详细讲义（`docs/notes/`）+ 一张 5 分钟速读卡（`docs/essence/`），关键页面以 2 倍分辨率渲染为 WebP 并标注页码。
-
 ## 课程笔记
 
 已整理 10 讲（当前已发布 slides 的全部讲次）：
@@ -40,46 +38,6 @@
 10 讲各有一张 5 分钟速读卡，另有 50 分钟学习路线、系统栈与跨讲对照表：[精华版总览](docs/essence/index.md)。
 
 在线阅读时，顶部可在「详细讲义」与「精华版」之间切换；每一讲的两种版本页一一对应。
-
-## 本地开发
-
-需要 Node.js 22+。
-
-```bash
-npm install
-npm run docs:dev          # 本地预览 http://localhost:5173/stanford-cs329z/
-npm run docs:build        # 构建到 docs/.vitepress/dist
-npm run docs:check        # 检查站内链接、图片引用、sitemap 与 KaTeX
-npm run docs:preview      # 预览构建产物
-```
-
-`docs:check` 需要先 `docs:build`，CI 在构建后自动执行。
-
-### 重新渲染某页 slide
-
-```bash
-python3 scripts/render_slides.py 03 5 12 18   # 第 3 讲第 5、12、18 页
-```
-
-输出到 `docs/public/images/lecture-03/p05.webp`、`p12.webp`、`p18.webp`，正文用 `<SlideFigure lecture="03" page="5" caption="…" />` 引用。
-
-### 重新生成图标与 OG 图片
-
-```bash
-python3 scripts/make_assets.py
-```
-
-## 部署到 GitHub Pages
-
-仓库已配置 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)：推送到 `main` 后自动构建、执行链接检查并发布。
-
-首次部署只需在 GitHub 上设置一次：
-
-1. 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**；
-2. 推送到 `main`，或在 **Actions → Deploy docs to GitHub Pages** 里手动 `Run workflow`；
-3. 等待 `build` 与 `deploy` 两个 job 变绿，站点发布在 `https://<user>.github.io/<repo>/`。
-
-本项目是 project site，`base` 为 `/stanford-cs329z/`（见 `docs/.vitepress/config.mts`）。若要部署到用户主页或自定义域名，把 `base` 改成 `/`，同时把 `siteUrl` 改成实际域名即可；两个值都可以用环境变量 `DOCS_BASE` / `DOCS_URL` 覆盖。
 
 ## 课程安排
 
